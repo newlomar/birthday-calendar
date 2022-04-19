@@ -6,5 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Cadastro de pessoas</h1>
+    <form class="form form-js" data-js="form">
+      <label for="name">
+        Nome:
+        <input
+          class="form-field js-field"
+          type="text"
+          name="name"
+          id="name"
+          maxlength="120"
+          data-js="nameInput"
+          required
+        />
+      </label>
+      <label for="birth-date">
+        Data de nascimento:
+        <input
+          class="form-field js-field"
+          id="birth-date"
+          name="birth-date"
+          type="date"
+          required
+        />
+      </label>
+      <button type="submit">Cadastrar</button>
+    </form>
+
+    <script src="./script.js"></script>
+  </body>
 </html>
