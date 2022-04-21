@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
@@ -16,7 +17,9 @@
           type="text"
           name="name"
           id="name"
+          minlength="3"
           maxlength="120"
+          pattern="[a-zA-Z]+"
           data-js="nameInput"
           required
         />
@@ -28,6 +31,10 @@
           id="birth-date"
           name="birth-date"
           type="date"
+          placeholder="dd-mm-yyyy"
+          min="1900-01-01"
+          max="2022-04-21"
+          data-js="date-picker"
           required
         />
       </label>

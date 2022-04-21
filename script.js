@@ -1,5 +1,12 @@
 const form = document.querySelector("[data-js='form']");
+const datePicker = document.querySelector("[data-js='date-picker']");
 
+datePicker.max = new Date()
+  .toLocaleDateString()
+  .replace(/\//g, "-")
+  .split("-")
+  .reverse()
+  .join("-");
 form.addEventListener("submit", handleSubmit);
 
 function handleSubmit(event) {
