@@ -42,11 +42,27 @@ function addRowToTable(name, birthDate) {
   const tr = document.createElement("tr");
   const tdName = document.createElement("td");
   const tdBirthDate = document.createElement("td");
+  const tdButton = document.createElement("td");
+  const button = document.createElement("button");
+
+  button.addEventListener("click", function () {
+    this.parentNode.parentNode.children[0].textContent = "";
+    this.parentNode.parentNode.children[0].appendChild(
+      document.createElement("input")
+    );
+    this.parentNode.parentNode.children[1].textContent = "";
+    this.parentNode.parentNode.children[1].appendChild(
+      document.createElement("input")
+    );
+  });
 
   tdName.textContent = name;
   tdBirthDate.textContent = birthDate;
+  button.textContent = "Edit";
+  tdButton.appendChild(button);
 
   tr.appendChild(tdName);
   tr.appendChild(tdBirthDate);
+  tr.appendChild(tdButton);
   tBody.appendChild(tr);
 }
