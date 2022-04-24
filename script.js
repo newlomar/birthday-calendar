@@ -46,23 +46,43 @@ function addRowToTable(name, birthDate) {
   const button = document.createElement("button");
 
   button.addEventListener("click", function () {
+    this.textContent = this.textContent === "Editar" ? "Salvar" : "Editar";
+    const newNameInput = document.createElement("input");
+    const newDateInput = document.createElement("input");
+
+    newNameInput.className = "form-field js-field";
+    newNameInput.type = "text";
+    newNameInput.minLength = "3";
+    newNameInput.maxLength = "120";
+    newNameInput.pattern = "^[a-zA-Z ]*$";
+    newNameInput.required = true;
+
+    newDateInput.className = "form-field js-field";
+    newDateInput.type = "date";
+    newDateInput.placeholder = "dd-mm-yyyy";
+    newDateInput.min = "1900-01-01";
+    newDateInput.max = "2022-04-21";
+    newDateInput.required;
+
     this.parentNode.parentNode.children[0].textContent = "";
-    this.parentNode.parentNode.children[0].appendChild(
-      document.createElement("input")
-    );
+    this.parentNode.parentNode.children[0].appendChild(newNameInput);
+
     this.parentNode.parentNode.children[1].textContent = "";
-    this.parentNode.parentNode.children[1].appendChild(
-      document.createElement("input")
-    );
+    this.parentNode.parentNode.children[1].appendChild(newDateInput);
+
+    this.parentNode.parentNode.children[2].removeChild(this);
+    //adicionar um novo botão "salvar com uma nova função"
+
+    //Após clicar em salvar, voltar com o botão de editar
   });
 
   tdName.textContent = name;
   tdBirthDate.textContent = birthDate;
-  button.textContent = "Edit";
+  button.textContent = "Editar";
   tdButton.appendChild(button);
-
   tr.appendChild(tdName);
   tr.appendChild(tdBirthDate);
   tr.appendChild(tdButton);
+
   tBody.appendChild(tr);
 }

@@ -13,3 +13,7 @@ th,
 td {
   padding: 10px;
 }
+
+input::placeholder {
+  color: black;
+}
