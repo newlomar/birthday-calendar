@@ -70,8 +70,14 @@ function addRowToTable(name, birthDate) {
     this.parentNode.parentNode.children[1].textContent = "";
     this.parentNode.parentNode.children[1].appendChild(newDateInput);
 
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Salvar";
+    saveButton.addEventListener("click", function () {
+      console.log(this.parentNode.parentNode.rowIndex);
+    });
+    this.parentNode.parentNode.children[2].appendChild(saveButton);
+
     this.parentNode.parentNode.children[2].removeChild(this);
-    //adicionar um novo botão "salvar com uma nova função"
 
     //Após clicar em salvar, voltar com o botão de editar
   });
