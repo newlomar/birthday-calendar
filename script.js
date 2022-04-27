@@ -45,42 +45,7 @@ function addRowToTable(name, birthDate) {
   const tdButton = document.createElement("td");
   const button = document.createElement("button");
 
-  button.addEventListener("click", function () {
-    this.textContent = this.textContent === "Editar" ? "Salvar" : "Editar";
-    const newNameInput = document.createElement("input");
-    const newDateInput = document.createElement("input");
-
-    newNameInput.className = "form-field js-field";
-    newNameInput.type = "text";
-    newNameInput.minLength = "3";
-    newNameInput.maxLength = "120";
-    newNameInput.pattern = "^[a-zA-Z ]*$";
-    newNameInput.required = true;
-
-    newDateInput.className = "form-field js-field";
-    newDateInput.type = "date";
-    newDateInput.placeholder = "dd-mm-yyyy";
-    newDateInput.min = "1900-01-01";
-    newDateInput.max = "2022-04-21";
-    newDateInput.required;
-
-    this.parentNode.parentNode.children[0].textContent = "";
-    this.parentNode.parentNode.children[0].appendChild(newNameInput);
-
-    this.parentNode.parentNode.children[1].textContent = "";
-    this.parentNode.parentNode.children[1].appendChild(newDateInput);
-
-    const saveButton = document.createElement("button");
-    saveButton.textContent = "Salvar";
-    saveButton.addEventListener("click", function () {
-      console.log(this.parentNode.parentNode.rowIndex);
-    });
-    this.parentNode.parentNode.children[2].appendChild(saveButton);
-
-    this.parentNode.parentNode.children[2].removeChild(this);
-
-    //Após clicar em salvar, voltar com o botão de editar
-  });
+  button.addEventListener("click", handleClick);
 
   tdName.textContent = name;
   tdBirthDate.textContent = birthDate;
@@ -91,4 +56,45 @@ function addRowToTable(name, birthDate) {
   tr.appendChild(tdButton);
 
   tBody.appendChild(tr);
+}
+
+function handleClick() {
+  this.textContent = this.textContent === "Editar" ? "Salvar" : "Editar";
+  const newNameInput = document.createElement("input");
+  const newDateInput = document.createElement("input");
+
+  newNameInput.className = "form-field js-field";
+  newNameInput.type = "text";
+  newNameInput.minLength = "3";
+  newNameInput.maxLength = "120";
+  newNameInput.pattern = "^[a-zA-Z ]*$";
+  newNameInput.required = true;
+
+  newDateInput.className = "form-field js-field";
+  newDateInput.type = "date";
+  newDateInput.placeholder = "dd-mm-yyyy";
+  newDateInput.min = "1900-01-01";
+  newDateInput.max = "2022-04-21";
+  newDateInput.required;
+
+  this.parentNode.parentNode.children[0].textContent = "";
+  this.parentNode.parentNode.children[0].appendChild(newNameInput);
+
+  this.parentNode.parentNode.children[1].textContent = "";
+  this.parentNode.parentNode.children[1].appendChild(newDateInput);
+
+  const saveButton = document.createElement("button");
+  saveButton.textContent = "Salvar";
+  saveButton.addEventListener("click", function () {
+    console.log(this.parentNode.parentNode.rowIndex);
+
+    const editButton = document.createElement("button");
+    editButton.addEventListener("click");
+    editButton.textContent = "Editar";
+    this.parentNode.parentNode.children[2].appendChild(editButton);
+    this.parentNode.parentNode.children[2].removeChild(this);
+  });
+  this.parentNode.parentNode.children[2].appendChild(saveButton);
+
+  this.parentNode.parentNode.children[2].removeChild(this);
 }
