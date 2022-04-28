@@ -131,10 +131,16 @@ function handleEditClick() {
     const editButton = document.createElement("button");
     editButton.textContent = "Editar";
     editButton.addEventListener("click", handleEditClick);
-    this.parentNode.parentNode.children[2].appendChild(editButton);
+    this.parentNode.parentNode.children[2].insertAdjacentElement(
+      "afterbegin",
+      editButton
+    );
     this.parentNode.parentNode.children[2].removeChild(this);
   });
 
-  this.parentNode.parentNode.children[2].appendChild(saveButton);
+  this.parentNode.parentNode.children[2].insertAdjacentElement(
+    "afterbegin",
+    saveButton
+  );
   this.parentNode.parentNode.children[2].removeChild(this);
 }
