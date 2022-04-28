@@ -47,7 +47,7 @@ function addRowToTable(name, birthDate) {
   const editButton = document.createElement("button");
   const deleteButton = document.createElement("button");
 
-  editButton.addEventListener("click", handleClick);
+  editButton.addEventListener("click", handleEditClick);
   deleteButton.addEventListener("click", () => {
     alert("Salve");
   });
@@ -63,7 +63,7 @@ function addRowToTable(name, birthDate) {
   tBody.appendChild(tr);
 }
 
-function handleClick() {
+function handleEditClick() {
   this.textContent = this.textContent === "Editar" ? "Salvar" : "Editar";
   const newNameInput = document.createElement("input");
   const newDateInput = document.createElement("input");
@@ -73,14 +73,12 @@ function handleClick() {
   newNameInput.minLength = "3";
   newNameInput.maxLength = "120";
   newNameInput.pattern = "^[a-zA-Z ]*$";
-  newNameInput.required = true;
 
   newDateInput.className = "form-field js-field";
   newDateInput.type = "date";
   newDateInput.placeholder = "dd-mm-yyyy";
   newDateInput.min = "1900-01-01";
   newDateInput.max = "2022-04-27";
-  newDateInput.required;
 
   const oldName = this.parentNode.parentNode.children[0].textContent;
   const oldDate = this.parentNode.parentNode.children[1].textContent;
@@ -128,11 +126,11 @@ function handleClick() {
 
     const editButton = document.createElement("button");
     editButton.textContent = "Editar";
-    editButton.addEventListener("click", handleClick);
+    editButton.addEventListener("click", handleEditClick);
     this.parentNode.parentNode.children[2].appendChild(editButton);
     this.parentNode.parentNode.children[2].removeChild(this);
   });
-  this.parentNode.parentNode.children[2].appendChild(saveButton);
 
+  this.parentNode.parentNode.children[2].appendChild(saveButton);
   this.parentNode.parentNode.children[2].removeChild(this);
 }
