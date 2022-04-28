@@ -43,18 +43,22 @@ function addRowToTable(name, birthDate) {
   const tr = document.createElement("tr");
   const tdName = document.createElement("td");
   const tdBirthDate = document.createElement("td");
-  const tdButton = document.createElement("td");
-  const button = document.createElement("button");
+  const tdButtons = document.createElement("td");
+  const editButton = document.createElement("button");
+  const deleteButton = document.createElement("button");
 
-  button.addEventListener("click", handleClick);
+  editButton.addEventListener("click", handleClick);
+  deleteButton.addEventListener("click", () => {
+    alert("Salve");
+  });
 
   tdName.textContent = name;
   tdBirthDate.textContent = birthDate;
-  button.textContent = "Editar";
-  tdButton.appendChild(button);
+  editButton.textContent = "Editar";
+  tdButtons.appendChild(editButton);
   tr.appendChild(tdName);
   tr.appendChild(tdBirthDate);
-  tr.appendChild(tdButton);
+  tr.appendChild(tdButtons);
 
   tBody.appendChild(tr);
 }
@@ -78,6 +82,9 @@ function handleClick() {
   newDateInput.max = "2022-04-27";
   newDateInput.required;
 
+  const oldName = this.parentNode.parentNode.children[0].textContent;
+  const oldDate = this.parentNode.parentNode.children[1].textContent;
+
   this.parentNode.parentNode.children[0].textContent = "";
   this.parentNode.parentNode.children[0].appendChild(newNameInput);
 
@@ -87,27 +94,37 @@ function handleClick() {
   const saveButton = document.createElement("button");
   saveButton.textContent = "Salvar";
   saveButton.addEventListener("click", function () {
-    const peopleArray = JSON.parse(localStorage.getItem("people")) || [];
+    if (
+      !(
+        this.parentNode.parentNode.children[0].children[0].value === "" ||
+        this.parentNode.parentNode.children[1].children[0].value === ""
+      )
+    ) {
+      const peopleArray = JSON.parse(localStorage.getItem("people")) || [];
 
-    peopleArray[this.parentNode.parentNode.rowIndex - 1].name =
-      this.parentNode.parentNode.children[0].children[0].value;
+      peopleArray[this.parentNode.parentNode.rowIndex - 1].name =
+        this.parentNode.parentNode.children[0].children[0].value;
 
-    peopleArray[this.parentNode.parentNode.rowIndex - 1].birthDate =
-      this.parentNode.parentNode.children[1].children[0].value
-        .split("-")
-        .reverse()
-        .join("/");
+      peopleArray[this.parentNode.parentNode.rowIndex - 1].birthDate =
+        this.parentNode.parentNode.children[1].children[0].value
+          .split("-")
+          .reverse()
+          .join("/");
 
-    localStorage.setItem("people", JSON.stringify(peopleArray));
+      localStorage.setItem("people", JSON.stringify(peopleArray));
 
-    this.parentNode.parentNode.children[0].textContent =
-      this.parentNode.parentNode.children[0].children[0].value;
+      this.parentNode.parentNode.children[0].textContent =
+        this.parentNode.parentNode.children[0].children[0].value;
 
-    this.parentNode.parentNode.children[1].textContent =
-      this.parentNode.parentNode.children[1].children[0].value
-        .split("-")
-        .reverse()
-        .join("/");
+      this.parentNode.parentNode.children[1].textContent =
+        this.parentNode.parentNode.children[1].children[0].value
+          .split("-")
+          .reverse()
+          .join("/");
+    } else {
+      this.parentNode.parentNode.children[0].textContent = oldName;
+      this.parentNode.parentNode.children[1].textContent = oldDate;
+    }
 
     const editButton = document.createElement("button");
     editButton.textContent = "Editar";
