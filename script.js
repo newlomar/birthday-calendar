@@ -48,14 +48,18 @@ function addRowToTable(name, birthDate) {
   const deleteButton = document.createElement("button");
 
   editButton.addEventListener("click", handleEditClick);
-  deleteButton.addEventListener("click", () => {
-    alert("Salve");
+
+  deleteButton.addEventListener("click", function () {
+    alert("Salve Simpatia");
   });
 
   tdName.textContent = name;
   tdBirthDate.textContent = birthDate;
   editButton.textContent = "Editar";
+  deleteButton.textContent = "Deletar";
+
   tdButtons.appendChild(editButton);
+  tdButtons.appendChild(deleteButton);
   tr.appendChild(tdName);
   tr.appendChild(tdBirthDate);
   tr.appendChild(tdButtons);
