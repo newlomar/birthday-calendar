@@ -23,9 +23,10 @@ function handleSubmit(event) {
   const nameInput = document.querySelector("[data-js='nameInput']");
   const newPerson = {
     name: event.target.elements["name"].value,
-    birthDate: new Date(
-      event.target.elements["birthDate"].value
-    ).toLocaleDateString(),
+    birthDate: event.target.elements["birthDate"].value
+      .split("-")
+      .reverse()
+      .join("/"),
   };
   const peopleArray = JSON.parse(localStorage.getItem("people")) || [];
 
@@ -74,7 +75,7 @@ function handleClick() {
   newDateInput.type = "date";
   newDateInput.placeholder = "dd-mm-yyyy";
   newDateInput.min = "1900-01-01";
-  newDateInput.max = "2022-04-21";
+  newDateInput.max = "2022-04-27";
   newDateInput.required;
 
   this.parentNode.parentNode.children[0].textContent = "";
@@ -86,11 +87,31 @@ function handleClick() {
   const saveButton = document.createElement("button");
   saveButton.textContent = "Salvar";
   saveButton.addEventListener("click", function () {
-    console.log(this.parentNode.parentNode.rowIndex);
+    const peopleArray = JSON.parse(localStorage.getItem("people")) || [];
+
+    peopleArray[this.parentNode.parentNode.rowIndex - 1].name =
+      this.parentNode.parentNode.children[0].children[0].value;
+
+    peopleArray[this.parentNode.parentNode.rowIndex - 1].birthDate =
+      this.parentNode.parentNode.children[1].children[0].value
+        .split("-")
+        .reverse()
+        .join("/");
+
+    localStorage.setItem("people", JSON.stringify(peopleArray));
+
+    this.parentNode.parentNode.children[0].textContent =
+      this.parentNode.parentNode.children[0].children[0].value;
+
+    this.parentNode.parentNode.children[1].textContent =
+      this.parentNode.parentNode.children[1].children[0].value
+        .split("-")
+        .reverse()
+        .join("/");
 
     const editButton = document.createElement("button");
-    editButton.addEventListener("click");
     editButton.textContent = "Editar";
+    editButton.addEventListener("click", handleClick);
     this.parentNode.parentNode.children[2].appendChild(editButton);
     this.parentNode.parentNode.children[2].removeChild(this);
   });
