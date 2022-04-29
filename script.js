@@ -50,7 +50,24 @@ function addRowToTable(name, birthDate) {
   editButton.addEventListener("click", handleEditClick);
 
   deleteButton.addEventListener("click", function () {
-    alert("Salve Simpatia");
+    const deleteLinne = this.parentNode.parentNode;
+    const tBody = document.querySelector("[data-js='tbody']");
+
+    //utilizar slice + concat para novo array no localStorage.
+    // const peopleArray = JSON.parse(localStorage.getItem("people")) || [];
+
+    // peopleArray[deleteLinne.rowIndex - 1] =
+    //   this.parentNode.parentNode.children[0].children[0].value;
+
+    // peopleArray[this.parentNode.parentNode.rowIndex - 1].birthDate =
+    //   this.parentNode.parentNode.children[1].children[0].value
+    //     .split("-")
+    //     .reverse()
+    //     .join("/");
+
+    // localStorage.setItem("people", JSON.stringify(peopleArray));
+
+    tBody.removeChild(deleteLinne);
   });
 
   tdName.textContent = name;
