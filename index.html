@@ -4,17 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
     <main>
-      <h1>Cadastro de pessoas</h1>
+      <h1>Datas de aniversário</h1>
       <form class="form form-js" data-js="form">
         <label for="name">
-          Nome:
+          Nome
           <input
-            class="form-field js-field"
+            class="form-input form-field js-field"
             type="text"
             name="name"
             id="name"
@@ -26,9 +32,9 @@
           />
         </label>
         <label for="birthDate">
-          Data de nascimento:
+          Data de nascimento
           <input
-            class="form-field js-field"
+            class="form-input form-field js-field"
             id="birthDate"
             name="birthDate"
             type="date"
@@ -39,7 +45,9 @@
             required
           />
         </label>
-        <button type="submit" data-js="submit">Cadastrar</button>
+        <button class="submit-button" type="submit" data-js="submit">
+          Cadastrar
+        </button>
       </form>
 
       <table>
@@ -47,7 +55,7 @@
           <tr>
             <th>Nome</th>
             <th>Data de Nascimento</th>
-            <th></th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody data-js="tbody"></tbody>

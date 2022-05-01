@@ -2,6 +2,12 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-family: "Roboto Serif", serif;
+}
+
+body {
+  background-color: #1a2238;
+  color: white;
 }
 
 main {
@@ -9,11 +15,16 @@ main {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  color: #9daaf2;
 }
 
 label {
   display: block;
+  padding: 10px 20px 20px 0px;
 }
 
 table {
@@ -30,8 +41,56 @@ td {
 th,
 td {
   padding: 10px;
+  text-align: center;
 }
 
-input::placeholder {
-  color: black;
+tr {
+  background-color: #f4db7d;
+  color: #1a2238;
+}
+
+td > input {
+  margin: 0 auto;
+}
+
+.form-input {
+  display: block;
+  width: 400px;
+  max-width: 100%;
+  padding: 5px 5px;
+  margin-top: 5px;
+}
+
+.submit-button {
+  font-family: "Roboto Serif", serif;
+  color: #1a2238;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: #ff6a3d;
+  border: 1px solid #ff6a3d;
+  padding: 10px;
+  margin: 10px 0px 30px 0px;
+  transition: color 500ms ease-in-out, background-color 500ms ease-in-out;
+}
+
+.submit-button:hover {
+  color: #ff6a3d;
+  background-color: #1a2238;
+}
+
+.action-button {
+  font-family: "Roboto Serif", serif;
+  color: #1a2238;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: #ff6a3d;
+  border: 1px solid #ff6a3d;
+  padding: 10px;
+  margin-left: 10px;
+  transition: color 500ms ease-in-out, background-color 500ms ease-in-out;
+}
+
+.action-button:hover {
+  color: #ff6a3d;
+  background-color: #1a2238;
 }

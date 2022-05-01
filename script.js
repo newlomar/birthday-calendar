@@ -67,7 +67,9 @@ function addRowToTable(name, birthDate) {
   tdName.textContent = name;
   tdBirthDate.textContent = birthDate;
   editButton.textContent = "Editar";
+  editButton.className = "action-button";
   deleteButton.textContent = "Deletar";
+  deleteButton.className = "action-button";
 
   tdButtons.appendChild(editButton);
   tdButtons.appendChild(deleteButton);
@@ -79,7 +81,6 @@ function addRowToTable(name, birthDate) {
 }
 
 function handleEditClick() {
-  this.textContent = this.textContent === "Editar" ? "Salvar" : "Editar";
   const newNameInput = document.createElement("input");
   const newDateInput = document.createElement("input");
 
@@ -106,6 +107,7 @@ function handleEditClick() {
 
   const saveButton = document.createElement("button");
   saveButton.textContent = "Salvar";
+  saveButton.className = "action-button";
   saveButton.addEventListener("click", function () {
     if (
       !(
@@ -141,6 +143,7 @@ function handleEditClick() {
 
     const editButton = document.createElement("button");
     editButton.textContent = "Editar";
+    editButton.className = "action-button";
     editButton.addEventListener("click", handleEditClick);
     this.parentNode.parentNode.children[2].insertAdjacentElement(
       "afterbegin",
