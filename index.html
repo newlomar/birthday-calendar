@@ -8,49 +8,51 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Cadastro de pessoas</h1>
-    <form class="form form-js" data-js="form">
-      <label for="name">
-        Nome:
-        <input
-          class="form-field js-field"
-          type="text"
-          name="name"
-          id="name"
-          minlength="3"
-          maxlength="120"
-          pattern="^[a-zA-Z ]*$"
-          data-js="nameInput"
-          required
-        />
-      </label>
-      <label for="birthDate">
-        Data de nascimento:
-        <input
-          class="form-field js-field"
-          id="birthDate"
-          name="birthDate"
-          type="date"
-          placeholder="dd-mm-yyyy"
-          min="1900-01-01"
-          max="2022-04-21"
-          data-js="date-picker"
-          required
-        />
-      </label>
-      <button type="submit" data-js="submit">Cadastrar</button>
-    </form>
+    <main>
+      <h1>Cadastro de pessoas</h1>
+      <form class="form form-js" data-js="form">
+        <label for="name">
+          Nome:
+          <input
+            class="form-field js-field"
+            type="text"
+            name="name"
+            id="name"
+            minlength="3"
+            maxlength="120"
+            pattern="^[a-zA-Z ]*$"
+            data-js="nameInput"
+            required
+          />
+        </label>
+        <label for="birthDate">
+          Data de nascimento:
+          <input
+            class="form-field js-field"
+            id="birthDate"
+            name="birthDate"
+            type="date"
+            placeholder="dd-mm-yyyy"
+            min="1900-01-01"
+            max="2022-04-21"
+            data-js="date-picker"
+            required
+          />
+        </label>
+        <button type="submit" data-js="submit">Cadastrar</button>
+      </form>
 
-    <table>
-      <thead data-js="thead">
-        <tr>
-          <th>Nome</th>
-          <th>Data de Nascimento</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody data-js="tbody"></tbody>
-    </table>
+      <table>
+        <thead data-js="thead">
+          <tr>
+            <th>Nome</th>
+            <th>Data de Nascimento</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody data-js="tbody"></tbody>
+      </table>
+    </main>
 
     <script src="./script.js"></script>
   </body>

@@ -53,19 +53,13 @@ function addRowToTable(name, birthDate) {
     const deleteLinne = this.parentNode.parentNode;
     const tBody = document.querySelector("[data-js='tbody']");
 
-    //utilizar slice + concat para novo array no localStorage.
-    // const peopleArray = JSON.parse(localStorage.getItem("people")) || [];
+    const peopleArray = JSON.parse(localStorage.getItem("people")) || [];
 
-    // peopleArray[deleteLinne.rowIndex - 1] =
-    //   this.parentNode.parentNode.children[0].children[0].value;
+    const newPeopleArray = peopleArray
+      .slice(0, deleteLinne.rowIndex - 1)
+      .concat(peopleArray.slice(deleteLinne.rowIndex, peopleArray.length));
 
-    // peopleArray[this.parentNode.parentNode.rowIndex - 1].birthDate =
-    //   this.parentNode.parentNode.children[1].children[0].value
-    //     .split("-")
-    //     .reverse()
-    //     .join("/");
-
-    // localStorage.setItem("people", JSON.stringify(peopleArray));
+    localStorage.setItem("people", JSON.stringify(newPeopleArray));
 
     tBody.removeChild(deleteLinne);
   });

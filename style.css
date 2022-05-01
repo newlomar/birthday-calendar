@@ -1,5 +1,23 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 label {
   display: block;
+}
+
+table {
+  width: 100%;
 }
 
 table,
