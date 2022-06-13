@@ -94,7 +94,12 @@ function handleEditClick() {
   newDateInput.type = "date";
   newDateInput.placeholder = "dd-mm-yyyy";
   newDateInput.min = "1900-01-01";
-  newDateInput.max = "2022-04-27";
+  newDateInput.max = new Date()
+  .toLocaleDateString()
+  .replace(/\//g, "-")
+  .split("-")
+  .reverse()
+  .join("-");
 
   const oldName = this.parentNode.parentNode.children[0].textContent;
   const oldDate = this.parentNode.parentNode.children[1].textContent;
